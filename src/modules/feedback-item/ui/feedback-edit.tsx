@@ -13,7 +13,7 @@ export const FeedbackEdit: React.FC<FeedbackEditProps> = ({ item, onClose }) => 
 
   const handleSave = () => {
     updateFeedback(item.id, text, category);
-    onClose(); // закрыть модалку
+    onClose(); 
   };
 
   return (
@@ -25,7 +25,7 @@ export const FeedbackEdit: React.FC<FeedbackEditProps> = ({ item, onClose }) => 
           <label className="block text-sm font-medium mb-1 text-gray-700">Идея</label>
           <textarea
             value={text}
-            onChange={(e) => setText(e.target.value)}
+            onChange={(e) => setText(e.target.value as "UI" | "feature" | "performance")}
             className="w-full border border-gray-300 rounded p-2"
             rows={4}
           />
@@ -35,7 +35,7 @@ export const FeedbackEdit: React.FC<FeedbackEditProps> = ({ item, onClose }) => 
           <label className="block text-sm font-medium mb-1 text-gray-700">Категория</label>
           <select
             value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            onChange={(e) => setCategory(e.target.value as "UI" | "feature" | "performance")}
             className="w-full border border-gray-300 rounded p-2"
           >
             <option value="UI">UI</option>

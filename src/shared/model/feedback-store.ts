@@ -22,7 +22,7 @@ interface FeedbackState {
   like: (id: number) => void;
   dislike: (id: number) => void;
   deleteFeedback: (id: number) => void;
-  updateFeedback: (id: number, newText: string, newCategory: string) => void;
+  updateFeedback: (id: number, newText: string, newCategory: FeedbackCategory) => void;
 }
 
 // Zustand Store
@@ -83,7 +83,7 @@ export const useFeedbackStore = create<FeedbackState>()(
           feedbacks: state.feedbacks.filter((fb) => fb.id !== id),
         }));
       },
-      updateFeedback: (id: number, newText: string, newCategory: string) => {
+      updateFeedback: (id: number, newText: string, newCategory: FeedbackCategory) => {
         set((state) => ({
           feedbacks: state.feedbacks.map((fb) =>
             fb.id === id ? { ...fb, text: newText, category: newCategory } : fb
